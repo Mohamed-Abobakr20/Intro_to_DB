@@ -16,17 +16,16 @@ try:
 
     # create database
     try:
-        cursor.execute("CREATE DATABASE alx_book_store")
+        cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
         print("Database 'alx_book_store' created successfully!")
     except Error as err:
-        if err.errno == 1007:  # ER_DB_CREATE_EXISTS
-            print("Database 'alx_book_store' already exists.")
-        else:
-            print(f"Failed creating database: {Error}")  
+        print(f"Failed creating database: {err}")  
 
+# handle connection error
 except Error as err:
     print(f"Connection Error : {err}")
 
+# close database connection
 finally:
     try:
         if cursor:
