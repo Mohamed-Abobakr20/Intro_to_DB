@@ -11,14 +11,14 @@ try:
     # create cursor if connect
     if mydb.is_connected():
         print("Connected")
-        cursor = mydb.cursor()
 
-    # create database
-    try:
-        cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
-        print("Database 'alx_book_store' created successfully!")
-    except mysql.connector.Error as err:
-        print(f"Failed creating database: {err}")  
+        # create database
+        try:
+            cursor = mydb.cursor()
+            cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
+            print("Database 'alx_book_store' created successfully!")
+        except mysql.connector.Error as err:
+            print(f"Failed creating database: {err}")  
 
 # handle connection error
 except mysql.connector.Error as err:
